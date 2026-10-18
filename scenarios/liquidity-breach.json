@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0",
+  "scenario": "liquidity-breach",
+  "as_of": "2026-10-01T12:00:00Z",
+  "action_id": "SYN-ACT-001",
+  "agent": {
+    "id": "synthetic-treasury-agent"
+  },
+  "principal": {
+    "id": "synthetic-institution"
+  },
+  "intent": {
+    "action": "transfer",
+    "asset": "EUR",
+    "amount": 1000000,
+    "source": "wallet-a",
+    "destination": "custody-b"
+  },
+  "authority": {
+    "decision": "ALLOW",
+    "mandate": "synthetic-mandate-v1",
+    "resources": [
+      "wallet-a",
+      "wallet-delegated"
+    ],
+    "amount_limit": 1500000,
+    "exposure_limit": 2000000,
+    "counterparty": "custody-b",
+    "beneficial_owner": "synthetic-owner-b"
+  },
+  "execution": {
+    "status": "EXECUTED",
+    "amount": 1000000,
+    "source": "wallet-a",
+    "destination": "custody-b",
+    "counterparty": "custody-b"
+  },
+  "observed_state": {
+    "settlement": "SETTLED",
+    "liquidity": "BREACH",
+    "reconciliation": "MATCHED",
+    "beneficial_owner": "synthetic-owner-b",
+    "exposure": 1000000,
+    "resource_delegated": false
+  },
+  "evidence": {
+    "observed_at": "2026-10-01T10:00:00Z",
+    "max_age_days": 2
+  },
+  "expected_decision": "NO_GO"
+}

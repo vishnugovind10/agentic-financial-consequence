@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "If you use this reference artifact, cite the repository release."
+title: "Agentic Financial Consequence Assurance"
+version: 0.1.0
+date-released: 2026-10-18
+url: https://github.com/vishnugovind10/agentic-financial-consequence
+abstract: >-
+  Synthetic reference implementation and benchmark for binding autonomous financial intent to observed economic consequence.
+license: MIT

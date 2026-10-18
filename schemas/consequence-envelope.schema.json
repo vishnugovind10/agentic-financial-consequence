@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/vishnugovind10/agentic-financial-consequence/schemas/consequence-envelope.schema.json",
+  "title": "Consequence Envelope",
+  "type": "object",
+  "required": ["schema_version", "scenario", "as_of", "intent", "authority", "execution", "observed_state", "evidence", "expected_decision"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "scenario": {"type": "string", "minLength": 1},
+    "as_of": {"type": "string", "format": "date-time"},
+    "action_id": {"type": "string"},
+    "agent": {"type": "object"},
+    "principal": {"type": "object"},
+    "intent": {"type": "object", "required": ["action", "asset", "amount", "source", "destination"], "properties": {"action": {"type": "string"}, "asset": {"type": "string"}, "amount": {"type": "number", "exclusiveMinimum": 0}, "source": {"type": "string"}, "destination": {"type": "string"}}},
+    "authority": {"type": "object", "required": ["decision", "resources", "amount_limit", "exposure_limit", "counterparty", "beneficial_owner"], "properties": {"decision": {"enum": ["ALLOW", "DENY", "CONSTRAIN", "REQUIRE_HUMAN"]}, "resources": {"type": "array", "items": {"type": "string"}}, "amount_limit": {"type": "number", "minimum": 0}, "exposure_limit": {"type": "number", "minimum": 0}, "counterparty": {"type": "string"}, "beneficial_owner": {"type": "string"}}},
+    "execution": {"type": "object", "required": ["status", "amount", "source", "destination", "counterparty"]},
+    "observed_state": {"type": "object"},
+    "evidence": {"type": "object", "required": ["observed_at", "max_age_days"], "properties": {"observed_at": {"type": "string", "format": "date-time"}, "max_age_days": {"type": "number", "minimum": 0}}},
+    "expected_decision": {"enum": ["GO", "CONDITIONAL_GO", "NO_GO", "ABSTAIN"]}
+  }
+}
