@@ -1,17 +1,17 @@
 """Small typed model for consequence envelopes and decisions."""
 
 from dataclasses import asdict, dataclass
-from enum import StrEnum
+from enum import Enum
 from typing import Any
 
 
-class Result(StrEnum):
+class Result(str, Enum):
     PASS = "PASS"
     FAIL = "FAIL"
     ABSTAIN = "ABSTAIN"
 
 
-class Decision(StrEnum):
+class Decision(str, Enum):
     GO = "GO"
     CONDITIONAL_GO = "CONDITIONAL_GO"
     NO_GO = "NO_GO"

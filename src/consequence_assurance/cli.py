@@ -24,6 +24,13 @@ def main() -> None:
     if args.json:
         print(json.dumps(results, indent=2))
     else:
+        false_assurance = sum(
+            result["final_decision"] == "GO" and result["scenario"] != "clean-execution"
+            and result["scenario"] != "delegated-resource"
+            for result in results
+        )
+        if false_assurance:
+            raise SystemExit(f"False assurance detected: {false_assurance}")
         print("Agentic Financial Consequence Assurance\n=======================================")
         print(f"\nScenarios: {len(results)}\n")
         for result in results:
