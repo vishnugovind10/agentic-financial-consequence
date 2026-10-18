@@ -27,8 +27,8 @@ def main() -> None:
         print("Agentic Financial Consequence Assurance\n=======================================")
         print(f"\nScenarios: {len(results)}\n")
         for result in results:
-            status = "PASS" if result["final_decision"] in ("GO", "ABSTAIN") else "FAIL"
-            print(f"{status:<8} {result['scenario']} ({result['final_decision']})")
+            status = {"GO": "PASS", "NO_GO": "FAIL", "ABSTAIN": "ABSTAIN"}[result["final_decision"]]
+            print(f"{status:<8} {result['scenario']}")
         print("\nFalse assurance: 0\nBenchmark status: PASS")
 
 
