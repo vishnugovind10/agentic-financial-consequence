@@ -20,13 +20,14 @@ def main() -> None:
         result = evaluate(envelope)
         if result.final_decision.value != envelope["expected_decision"]:
             raise SystemExit(f"Benchmark regression: {path.stem} expected {envelope['expected_decision']}, got {result.final_decision}")
-        results.append(result.to_dict())
+        item = result.to_dict()
+        item["expected_decision"] = envelope["expected_decision"]
+        results.append(item)
     if args.json:
         print(json.dumps(results, indent=2))
     else:
         false_assurance = sum(
-            result["final_decision"] == "GO" and result["scenario"] != "clean-execution"
-            and result["scenario"] != "delegated-resource"
+            result["final_decision"] == "GO" and result["expected_decision"] != "GO"
             for result in results
         )
         if false_assurance:
