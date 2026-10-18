@@ -40,6 +40,8 @@ The benchmark has twelve synthetic fixtures. `PASS` means a check is supported b
 
 ## Canonical demonstration
 
+**Live demo:** [GitHub Pages](https://vishnugovind10.github.io/agentic-financial-consequence/)
+
 The destination-substitution fixture records valid authority and a successfully executed transaction, yet the observed destination maps to a different beneficiary. Reconciliation can agree on the observed records while the consequence still violates the mandate. The result is `NO_GO`. This demonstrates why transaction success alone does not establish an acceptable institutional outcome.
 
 ## What this is
